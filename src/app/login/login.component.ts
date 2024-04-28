@@ -6,12 +6,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { merge } from 'rxjs';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule, MatGridListModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule, MatGridListModule, MatDividerModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -35,6 +38,10 @@ email = new FormControl('', [Validators.required, Validators.email]);
       this.errorMessage = '';
     }
   }
-  hide = true;  
+  hide = true;
+
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+  }
 }
 
