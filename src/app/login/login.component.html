@@ -1,29 +1,33 @@
-<form class="example-form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-    <mat-form-field class="example-full-width">
+<form class="example-form" #loginForm="ngForm">
+    <mat-form-field>
         <mat-label>Enter your email</mat-label>
-        <input matInput type="email" 
-        placeholder="email@example.com"
-        (blur)="updateErrorMessage()"
-        required name="email" ngModel #emailInput="ngModel">
+        <input matInput
+                     placeholder="pat@example.com"
+                     [formControl]="email"
+                     (blur)="updateErrorMessage()"
+                     required>
         @if (email.invalid) {
             <mat-error>{{errorMessage}}</mat-error>
         }
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-        <mat-label>Enter password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" required name="password" ngModel #passwordInput="ngModel">
+        <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
     </mat-form-field>
-    
-    <mat-form-field class="example-full-width">
-        <mat-label>Enter password again</mat-label>
+        
+        <mat-form-field>
+        <mat-label>Enter your password again</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
     </mat-form-field>
-    <button mat-flat-button color="primary" type="submit">Login</button>
+        <button mat-flat-button color="primary" type="submit">Login</button>
 </form>
+<span id="email">{{email.value}}</span>
+<br>
+<span id="password">{{password.value}}</span>

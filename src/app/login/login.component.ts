@@ -8,7 +8,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
-import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -19,7 +18,8 @@ import { NgForm } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('');
+  email = new FormControl('', [Validators.required, Validators.email]);
 
   errorMessage = '';
 
@@ -39,9 +39,5 @@ email = new FormControl('', [Validators.required, Validators.email]);
     }
   }
   hide = true;
-
-  onSubmit(form: NgForm) {
-    console.log(form.value);
-  }
 }
 
