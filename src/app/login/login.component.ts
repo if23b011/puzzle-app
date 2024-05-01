@@ -18,8 +18,9 @@ import { MatDividerModule } from '@angular/material/divider';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  password = new FormControl('');
   email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('');
+  password2 = new FormControl('');
 
   errorMessage = '';
 
