@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { merge } from 'rxjs';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
@@ -40,5 +40,17 @@ export class LoginComponent {
     }
   }
   hide = true;
+  login() {
+    if (this.email.value === '' || this.password.value === '') {
+      alert('Please enter email and password');
+    } else {
+      if (this.email.value === 'test@test.at' && this.password.value === '12345678') {
+        console.log('Login successful');
+      }
+      else {
+        console.log('Login failed');
+      }
+    }
+  }
 }
 

@@ -16,6 +16,9 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class SignupComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', Validators.minLength(8));
+  password2 = new FormControl('', Validators.minLength(8));
+  plz = new FormControl('', Validators.pattern('^[0-9]{4}$'));
 
   errorMessage = '';
 
@@ -34,6 +37,15 @@ export class SignupComponent {
       this.errorMessage = '';
     }
   }
-
   hide = true;
+  hide2 = true;
+  signUp() {
+    if (this.email.value === '' || this.password.value === '' || this.password2.value === '') {
+      alert('Please fill in all fields');
+    } else {
+      if (this.password.value !== this.password2.value) {
+        alert('Passwords do not match');
+      }
+    }
+  }
 }
