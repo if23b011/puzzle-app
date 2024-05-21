@@ -1,0 +1,60 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "FHTW Puzzle Game API",
+        "description": "API for FHTW Puzzle Game",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/login": {
+            "post": {
+                "summary": "Anmeldung",
+                "description": "Meldet einen Benutzer mit E-Mail und Passwort an",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Erfolgreiche Anmeldung",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Ungültige Anmeldeinformationen"
+                    }
+                }
+            }
+        }
+    }
+}
