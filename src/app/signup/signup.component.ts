@@ -6,11 +6,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { merge } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule, HttpClientModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
@@ -22,10 +23,17 @@ export class SignupComponent {
 
   errorMessage = '';
 
-  constructor() {
+  constructor(private http: HttpClient) {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
+  }
+
+  test() {
+    console.log(this.getHelloWorld());
+  }
+  getHelloWorld() {
+    return this.http.get('http://localhost:3000/');
   }
 
   updateErrorMessage() {
